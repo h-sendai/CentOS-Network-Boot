@@ -1,0 +1,38 @@
+/var/lib/tftpboot (For Raspbian)
+
+|-- bootcode.bin
+|-- cbe512b1 (cbe512b1はシリアル番号)
+|   |-- COPYING.linux
+|   |-- LICENCE.broadcom
+|   |-- LICENSE.oracle
+|   |-- bcm2708-rpi-0-w.dtb
+|   |-- bcm2708-rpi-b-plus.dtb
+  :  :  :  :  :  :  :  :  :  :
+|   |-- bootcode.bin
+|   |-- cmdline.txt
+|   |-- config.txt
+|   |-- fixup.dat
+|   |-- fixup_cd.dat
+  :  :  :  :  :  :  :  :  :  :
+|   |-- kernel.img
+|   |-- kernel7.img
+|   |-- overlays
+|   |   |-- 3dlab-nano-player.dtbo
+|   |   |-- README
+|   |   |-- adau1977-adc.dtbo
+  :  :  :  :  :  :  :  :  :  :
+|   |   |-- w1-gpio.dtbo
+|   |   `-- wittypi.dtbo
+|   |-- start.elf
+|   |-- start_cd.elf
+|   |-- start_db.elf
+|   `-- start_x.elf
+
+/var/lib/tftpboot (For CentOS PC)
+
+|-- initrd.img
+|-- vmlinuz
+|-- pxelinux.0
+|-- pxelinux.cfg
+    |-- C0A80A6E
+    `-- default
