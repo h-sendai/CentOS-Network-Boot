@@ -1,0 +1,23 @@
+########################################
+# /var/lib/tftpboot/pxelinux.cfg/default
+########################################
+
+# IPアドレスごとに指定したい場合はIPアドレスを１オクテットごとに
+# 16進数に変換し、それをファイル名とする。
+# たとえば192.168.10.110はC0A80A6Eとなるので
+# /var/lib/tftpboot/pxelinux.cfg/C0A80A6E
+# に書かれた内容は192.168.10.110のマシンだけで使われる。
+# MACアドレスで指定することも可能。
+# https://wiki.syslinux.org/wiki/index.php?title=PXELINUX#Configuration
+
+#
+# dhcpをつねに使うならip=は必要ない。
+# 下のように指定すると、static IP addressで設定され
+# dhcpリース切れは起こらず、DHCPREQUESTなどのDHCPパケットはでなくなる。
+#
+default rhel7
+
+label rhel7
+  kernel vmlinuz
+  append initrd=initrd.img root=nfs:192.168.10.204:/home/diskless-root/192.168.10.110 rw selinux=0 console=ttyS0,38400n8 ip=192.168.10.110:::24:diskless00:enp63s0:none
+  serial 0 38400
