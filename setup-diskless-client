@@ -1,0 +1,39 @@
+#!/bin/sh
+
+#ip_list="
+#    192.168.10.110
+#    192.168.10.111
+#    192.168.10.112
+#"
+
+ip_list="
+    192.168.10.110
+"
+
+create_client_dir_tree()
+{
+    for i in boot dev etc home media mnt opt proc root run srv sys tmp usr var; do
+        mkdir -p $i
+    done
+}
+
+symlink_dirs()
+{
+    ln -sfn usr/bin   bin
+    ln -sfn usr/lib   lib
+    ln -sfn usr/lib64 lib64
+    ln -sfn usr/sbin  sbin
+}
+
+for d in $ip_list; do
+    echo "---> trying $d"
+    mkdir -p $d
+    cd $d
+    create_client_dir_tree
+    symlink_dirs
+    mount --bind /nfs-master/usr usr
+    rsync -a /nfs-master/etc/ etc/
+    (cd /nfs-master; tar cf - var) | tar xf -
+    #rsync -a /nfs-master/var/ var/
+    cd ..
+done

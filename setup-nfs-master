@@ -1,0 +1,7 @@
+#!/bin/sh
+
+nfs_master=/nfs-master
+
+yum -y install @Base kernel dracut-network nfs-utils \
+--installroot=${nfs_master} --releasever=/
+
