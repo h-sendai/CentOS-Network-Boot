@@ -33,7 +33,6 @@ for d in $ip_list; do
     symlink_dirs
     mount --bind /nfs-master/usr usr
     rsync -a /nfs-master/etc/ etc/
-    (cd /nfs-master; tar cf - var) | tar xf -
-    #rsync -a /nfs-master/var/ var/
+    rsync -a /nfs-master/var/ var/
     cd ..
 done
