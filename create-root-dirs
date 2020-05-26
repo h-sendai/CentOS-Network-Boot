@@ -1,0 +1,14 @@
+#!/bin/sh
+
+create_dirs()
+{
+    for i in boot dev etc home media mnt opt proc root run srv sys tmp usr var; do
+        mkdir $i
+    done
+    ln -s usr/bin   bin
+    ln -s usr/lib   lib
+    ln -s usr/lib64 lib64
+    ln -s usr/sbin  sbin
+}
+
+create_dirs
